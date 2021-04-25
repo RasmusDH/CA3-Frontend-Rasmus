@@ -12,7 +12,8 @@ function App() {
       .login(userCredentials)
       .then(user => {
         push("/")
-        setUser({username: user.username})
+        setUser({username: user.username, beers: JSON.parse(user.beers)})
+        
       })
       .catch(error => handleError(error, setError))
   }
@@ -22,9 +23,15 @@ function App() {
     setUser(null)
   }
 
+  function addBeer(beer) {
+    setUser(user => ({
+      ...user, beers: [...user.beers, beer]
+    }))
+  }
+
   // Whenever the user changes the app is rerendered
   return user ? (
-    <AuthenticatedApp user={user} logout={logout} />
+    <AuthenticatedApp user={user} logout={logout} addBeer={addBeer} />
   ) : (
     <UnauthenticatedApp login={login} />
   )

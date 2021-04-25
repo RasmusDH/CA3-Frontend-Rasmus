@@ -5,6 +5,8 @@ import AdminPage from "./routes/AdminPage"
 import HomePage from "./routes/HomePage"
 import MuchDataPage from "./routes/MuchDataPage"
 import UserPage from "./routes/UserPage"
+import BeerPage from "./routes/BeerPage"
+import BoughtPage from "./routes/BoughtPage"
 
 function AuthenticatedApp(props) {
   const {logout, user} = props
@@ -23,6 +25,12 @@ function AuthenticatedApp(props) {
         </Route>
         <Route path="/admin">
           <AdminPage />
+        </Route>
+        <Route path="/bought">
+          <BoughtPage />
+        </Route>
+        <Route path="/beer">
+          <BeerPage />
         </Route>
         <Route path="/">
           <h1>404</h1>
